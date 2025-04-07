@@ -191,8 +191,22 @@ def serve_react(path):
         return send_from_directory(app.static_folder, path)
     return send_from_directory(app.static_folder, "index.html")
 
+#Self Ping to Run Render 24*7
+def self_ping():
+    """Function to keep the app awake by pinging itself."""
+    while True:
+        try:
+            url = "https://voxmedi.onrender.com/"
+            response = requests.get(url)
+            print(f"Self-ping status: {response.status_code}")
+        except Exception as e:
+            print(f"Error in self-ping: {e}")
+        time.sleep(600)
 
 # Main entry point
 if __name__ == "__main__":
+    # Start the self-pinging thread
+    threading.Thread(target=self_ping, daemon=True).start()
+
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
