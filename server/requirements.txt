@@ -1,0 +1,7 @@
+Flask
+flask-cors
+openai==0.28.0
+requests
+ffmpeg-python 
+soundfile
+imageio[ffmpeg]

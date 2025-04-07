@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* index.css */
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    @apply bg-[#F7EBEC] dark:bg-[#1D1E2C];
+  }
+  
+  @layer utilities {
+    .animate-text-glow {
+      animation: shimmer 2s infinite ease-in-out;
+    }
+  
+    @keyframes shimmer {
+      0%, 100% {
+        opacity: 0.7;
+        text-shadow: 0 0 4px #DBBDD5, 0 0 10px #DBBDD5;
+      }
+      50% {
+        opacity: 1;
+        text-shadow: 0 0 6px #F7EBEC, 0 0 15px #DBBDD5, 0 0 20px #DBBDD5;
+      }
+    }
+  }
